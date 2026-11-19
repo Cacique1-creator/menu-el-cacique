@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
@@ -88,4 +88,746 @@
             <circle cx="66" cy="45" r="4" fill="#FFFDF7" stroke="#451A03" stroke-width="1.5"/>
             <circle cx="67.5" cy="45" r="2" fill="#291509"/>
             <!-- Detalle plumaje / orejera -->
-            <path d="
+            <path d="M54 47 C51 47, 50 53, 54 54 C57 54, 58 51, 56 49" stroke="#DC2626" stroke-width="2.2" stroke-linecap="round"/>
+            <!-- Patas -->
+            <path d="M52 93 L50 103 M45 103 L55 103" stroke="#F59E0B" stroke-width="2.8" stroke-linecap="round"/>
+            <path d="M67 93 L69 103 M64 103 L74 103" stroke="#F59E0B" stroke-width="2.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <!-- Identidad Textual -->
+        <div class="flex-1 min-w-0">
+          <span class="inline-block text-[11px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-cacique-red text-white shadow-xs mb-1">
+            Asadero • Restaurante
+          </span>
+          <h1 class="text-2xl sm:text-3xl font-black tracking-tight text-cacique-red drop-shadow-[0_1px_0_rgba(255,255,255,0.9)] leading-tight">
+            EL CACIQUE
+          </h1>
+          <p class="text-sm sm:text-base font-semibold italic text-cacique-brown mt-0.5">
+            “Sabor y Calidad para su Paladar”
+          </p>
+          <div class="mt-2 inline-flex items-center gap-1.5 text-xs font-medium text-cacique-darkBrown bg-white/80 px-3 py-1 rounded-full border border-amber-300/80 shadow-2xs">
+            <svg class="w-3.5 h-3.5 text-cacique-red shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+            </svg>
+            <span>Calle 5 No. 4-25/31, Facatativá</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Barra Sticky de Búsqueda y Navegación por Categorías -->
+  <div class="sticky top-0 z-30 bg-cacique-cream/95 backdrop-blur-md border-b border-amber-200 shadow-xs">
+    <div class="max-w-3xl mx-auto px-4 pt-2.5 pb-2">
+      <!-- Buscador rápido -->
+      <div class="relative">
+        <svg class="w-4 h-4 text-amber-700/70 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 103.5 10.5a7.5 7.5 0 0013.15 6.15z" />
+        </svg>
+        <input
+          id="search-input"
+          type="search"
+          placeholder="Buscar plato, bebida o acompañamiento (ej. pollo, mojarra, arepa)..."
+          class="w-full pl-10 pr-9 py-2 text-sm bg-white border border-amber-300 rounded-xl text-cacique-darkBrown placeholder-amber-900/45 focus:outline-none focus:ring-2 focus:ring-cacique-amber focus:border-cacique-amber transition"
+        />
+        <button
+          id="clear-search"
+          type="button"
+          aria-label="Limpiar búsqueda"
+          class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-xs font-bold text-amber-800 bg-amber-100 hover:bg-amber-200 w-6 h-6 rounded-full items-center justify-center"
+        >
+          ✕
+        </button>
+      </div>
+
+      <!-- Pestañas de Categorías Horizontales -->
+      <nav id="category-nav" aria-label="Categorías del menú" class="flex items-center gap-2 overflow-x-auto no-scrollbar pt-2.5 pb-0.5">
+        <!-- Generado dinámicamente por JS -->
+      </nav>
+    </div>
+  </div>
+
+  <!-- Contenido Principal del Menú -->
+  <main class="max-w-3xl mx-auto px-4 pt-4">
+    <!-- Banner informativo sutil sobre calculadora de cuenta -->
+    <div class="mb-5 bg-amber-50/90 border border-amber-200/90 rounded-2xl p-3 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5 text-xs sm:text-sm text-cacique-brown">
+        <span class="w-7 h-7 rounded-xl bg-cacique-yellow/60 text-cacique-darkBrown font-bold flex items-center justify-center shrink-0">🧾</span>
+        <p>Toca <strong class="text-cacique-red font-bold">+ Agregar</strong> en cualquier plato para calcular el total de tu mesa antes de pedir.</p>
+      </div>
+    </div>
+
+    <!-- Estado vacío al buscar -->
+    <div id="empty-state" class="hidden text-center py-12 px-4 bg-white rounded-2xl border border-amber-200 shadow-2xs my-4">
+      <p class="text-3xl mb-2">🍗</p>
+      <h2 class="text-base font-bold text-cacique-darkBrown">No encontramos platos con ese nombre</h2>
+      <p class="text-sm text-amber-900/70 mt-1">Intenta con otro término o limpia el filtro de búsqueda.</p>
+      <button id="reset-search-btn" type="button" class="mt-4 px-4 py-2 bg-cacique-red text-white text-sm font-semibold rounded-xl shadow-xs hover:bg-cacique-brightRed transition">
+        Ver todo el menú
+      </button>
+    </div>
+
+    <!-- Contenedor de Secciones del Menú -->
+    <div id="menu-container" class="space-y-8">
+      <!-- Generado dinámicamente por JS -->
+    </div>
+
+    <!-- Pie de Página: Métodos de Pago y Contacto -->
+    <footer class="mt-12 pt-6 border-t-2 border-dashed border-amber-300">
+      <div class="bg-gradient-to-br from-cacique-yellow via-[#FDE047] to-amber-300 rounded-3xl p-5 sm:p-6 shadow-md border-2 border-cacique-red/80 text-cacique-darkBrown">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="px-2.5 py-0.5 rounded-full bg-cacique-red text-white text-xs font-extrabold uppercase tracking-wide">
+            Facilidades de Pago
+          </span>
+        </div>
+
+        <h2 class="text-lg sm:text-xl font-black text-cacique-darkBrown">
+          Recibimos pagos por:
+        </h2>
+
+        <!-- Tarjetas y Billeteras -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-3">
+          <div class="bg-white/95 rounded-2xl p-3 border border-amber-400/60 flex items-center gap-2.5 shadow-2xs">
+            <div class="w-9 h-9 rounded-xl bg-amber-100 text-cacique-brown flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <rect x="2" y="5" width="20" height="14" rx="2.5" />
+                <line x1="2" y1="10" x2="22" y2="10" />
+              </svg>
+            </div>
+            <div>
+              <p class="text-xs font-extrabold text-cacique-darkBrown leading-tight">Débito y Crédito</p>
+              <p class="text-[11px] text-amber-900/75">Datáfono disponible</p>
+            </div>
+          </div>
+
+          <div class="bg-white/95 rounded-2xl p-3 border border-amber-400/60 flex items-center gap-2.5 shadow-2xs">
+            <div class="w-9 h-9 rounded-xl bg-purple-100 text-purple-900 font-black text-xs flex items-center justify-center shrink-0">
+              NQ
+            </div>
+            <div>
+              <p class="text-xs font-extrabold text-cacique-darkBrown leading-tight">Nequi</p>
+              <p class="text-[11px] text-amber-900/75">Transferencia rápida</p>
+            </div>
+          </div>
+
+          <div class="bg-white/95 rounded-2xl p-3 border border-amber-400/60 flex items-center gap-2.5 shadow-2xs">
+            <div class="w-9 h-9 rounded-xl bg-red-100 text-cacique-red font-black text-xs flex items-center justify-center shrink-0">
+              DP
+            </div>
+            <div>
+              <p class="text-xs font-extrabold text-cacique-darkBrown leading-tight">Daviplata</p>
+              <p class="text-[11px] text-amber-900/75">Pago inmediato</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Llave Bre-B destacada con botón de copiar -->
+        <div class="mt-3.5 bg-cacique-red text-white rounded-2xl p-3.5 sm:p-4 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-bold uppercase tracking-wider bg-black/25 px-2 py-0.5 rounded-md">Llave Bre-B</span>
+              <span class="text-xs text-amber-200">Transferencia interbancaria</span>
+            </div>
+            <p id="breb-number" class="text-2xl sm:text-3xl font-black tracking-wider mt-1 font-mono select-all">
+              0090142901
+            </p>
+          </div>
+
+          <button
+            id="copy-breb-btn"
+            type="button"
+            class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-cacique-yellow hover:bg-amber-300 active:scale-95 text-cacique-darkBrown font-extrabold text-sm shadow-sm transition cursor-pointer"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+              <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+            </svg>
+            <span>Copiar número</span>
+          </button>
+        </div>
+
+        <!-- Dirección y Mensaje Final -->
+        <div class="mt-5 pt-4 border-t border-amber-600/25 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+          <p class="text-xs sm:text-sm font-bold text-cacique-darkBrown">
+            📍 Calle 5 No. 4-25/31, Facatativá
+          </p>
+          <p class="text-sm sm:text-base font-black text-cacique-red tracking-wide">
+            ¡GRACIAS POR PREFERIRNOS!
+          </p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Barra Flotante Inferior de Pre-orden / Calculadora de Cuenta -->
+  <div id="order-bar" class="fixed bottom-0 inset-x-0 z-40 translate-y-full transition-transform duration-300 px-3 pb-3 pointer-events-none">
+    <div class="max-w-3xl mx-auto pointer-events-auto">
+      <button
+        id="open-order-modal"
+        type="button"
+        class="w-full bg-cacique-darkBrown hover:bg-cacique-brown text-cacique-cream rounded-2xl p-3.5 shadow-2xl border-2 border-cacique-yellow flex items-center justify-between gap-3 transition active:scale-[0.99] cursor-pointer"
+      >
+        <div class="flex items-center gap-3">
+          <span id="order-count-badge" class="w-8 h-8 rounded-xl bg-cacique-yellow text-cacique-darkBrown font-black text-sm flex items-center justify-center">
+            0
+          </span>
+          <div class="text-left">
+            <p class="text-xs text-amber-200/90 font-medium leading-none">Tu pre-orden estimada</p>
+            <p class="text-sm font-bold text-white mt-0.5">Ver detalle de la cuenta</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span id="order-total-bar" class="text-lg sm:text-xl font-black text-cacique-yellow">
+            $0
+          </span>
+          <svg class="w-5 h-5 text-cacique-yellow" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+          </svg>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal / Cajón Desplegable de Detalle de Pre-orden -->
+  <div id="order-modal" class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center bg-black/60 backdrop-blur-xs p-0 sm:p-4" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="bg-cacique-cream w-full max-w-lg rounded-t-3xl sm:rounded-3xl border-t-4 sm:border-2 border-cacique-yellow shadow-2xl overflow-hidden flex flex-col max-h-[85vh]">
+      <!-- Cabecera Modal -->
+      <div class="px-5 py-4 bg-white border-b border-amber-200 flex items-center justify-between">
+        <div>
+          <h3 id="modal-title" class="text-lg font-black text-cacique-darkBrown">Tu Pre-Orden / Cuenta</h3>
+          <p class="text-xs text-amber-900/75">Resumen estimado para pedir al mesero o en caja</p>
+        </div>
+        <button id="close-order-modal" type="button" aria-label="Cerrar resumen" class="w-9 h-9 rounded-full bg-amber-100 hover:bg-amber-200 text-cacique-darkBrown font-bold flex items-center justify-center">
+          ✕
+        </button>
+      </div>
+
+      <!-- Lista de Ítems Seleccionados -->
+      <div id="order-items-list" class="p-5 overflow-y-auto space-y-3 flex-1">
+        <!-- Generado dinámicamente por JS -->
+      </div>
+
+      <!-- Pie del Modal con Total y Acciones -->
+      <div class="p-5 bg-white border-t border-amber-200 space-y-3">
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-bold text-cacique-brown">Total Estimado:</span>
+          <span id="order-total-modal" class="text-2xl font-black text-cacique-red">$0</span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2.5">
+          <button
+            id="clear-order-btn"
+            type="button"
+            class="py-2.5 px-4 rounded-xl border border-amber-300 text-cacique-brown hover:bg-amber-50 font-bold text-sm transition cursor-pointer"
+          >
+            Vaciar lista
+          </button>
+          <button
+            id="copy-order-btn"
+            type="button"
+            class="py-2.5 px-4 rounded-xl bg-cacique-red hover:bg-cacique-brightRed text-white font-bold text-sm shadow-sm transition cursor-pointer"
+          >
+            Copiar pedido
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Base de datos estructurada y exacta del menú físico de El Cacique
+    const MENU_DATA = [
+      {
+        id: 'pollo',
+        title: 'Pollo',
+        icon: '🍗',
+        subtitle: 'Asado al carbón y Broaster crocante',
+        items: [
+          { id: 'p1', name: 'Pollo Asado', price: 44000, desc: 'Papa + arepa', badge: 'Especialidad' },
+          { id: 'p2', name: '1/2 Pollo Asado', price: 22000, desc: 'Papa + arepa' },
+          { id: 'p3', name: '1/4 Pollo Asado', price: 11500, desc: 'Papa + arepa' },
+          { id: 'p4', name: 'Pollo Broaster', price: 46000, desc: 'Papa francesa + 4 sobres de miel + 4 sobres de salsa', badge: 'Crocante' },
+          { id: 'p5', name: '1/2 Pollo Broaster', price: 24000, desc: 'Papa francesa + 3 sobres de miel + 3 sobres de salsa' },
+          { id: 'p6', name: '1/4 Pollo Broaster', price: 13500, desc: 'Papa francesa + miel + salsa' },
+          { id: 'p7', name: 'Sobre de Miel o Salsa', price: 300, desc: 'Adicional individual' }
+        ]
+      },
+      {
+        id: 'platos-carta',
+        title: 'Platos a la Carta',
+        icon: '🍽️',
+        subtitle: 'Platos fuertes completos recién preparados',
+        items: [
+          { id: 'c1', name: 'Pechuga en Salsa de Champiñones', price: 40000, desc: 'Arroz + Papa francesa + Yuca' },
+          { id: 'c2', name: 'Pechuga Gratinada', price: 40000, desc: 'Arroz + Ensalada + Arroz + Patacón' },
+          { id: 'c3', name: 'Pechuga a la Plancha', price: 38000, desc: 'Arroz + Ensalada + Arroz + Patacón' },
+          { id: 'c4', name: 'Bandeja Cacique con Pollo Asado', price: 26000, desc: 'Papa francesa + Arroz + Ensalada + Patacón', badge: 'Recomendado' },
+          { id: 'c5', name: 'Bandeja Cacique con Pollo Broaster', price: 28000, desc: 'Papa francesa + Arroz + Ensalada + Patacón', badge: 'Recomendado' },
+          { id: 'c6', name: 'Arroz con Pollo', price: 29000, desc: 'Papa francesa + Ensalada' },
+          { id: 'c7', name: 'Mojarra Frita', price: 40000, desc: 'Papa francesa + Ensalada + Arroz + Patacón' },
+          { id: 'c8', name: 'Bagre Frito', price: 40000, desc: 'Papa francesa + Ensalada + Arroz + Patacón' },
+          { id: 'c9', name: 'Bagre en Salsa', price: 40000, desc: 'Yuca + Papa + Arroz' },
+          { id: 'c10', name: 'Churrasco', price: 42000, desc: 'Papa francesa + Ensalada + Patacón' },
+          { id: 'c11', name: 'Carne Asada', price: 39000, desc: 'Papa francesa + Ensalada + Arroz + Patacón' },
+          { id: 'c12', name: 'Sobrebarriga al Horno', price: 40000, desc: 'Papa francesa + Ensalada + Arroz + Patacón' },
+          { id: 'c13', name: 'Sobrebarriga en Salsa', price: 40000, desc: 'Yuca + Papa + Arroz' },
+          { id: 'c14', name: 'Lengua en Salsa', price: 37000, desc: 'Yuca + Papa + Arroz' },
+          { id: 'c15', name: 'Lomo de Cerdo', price: 38500, desc: 'Papa francesa + Arroz' },
+          { id: 'c16', name: 'Costillas de Cerdo', price: 39000, desc: 'Papa francesa + Ensalada + Arroz + Patacón' },
+          { id: 'c17', name: 'Bistec a Caballo', price: 41000, desc: 'Papa francesa + Arroz' },
+          { id: 'c18', name: 'Tabla Mixta', price: 42000, desc: 'Lomo + Pechuga + Res + Chorizo + Papa francesa + Arroz', badge: 'Para compartir' }
+        ]
+      },
+      {
+        id: 'comidas-rapidas',
+        title: 'Comidas Rápidas',
+        icon: '🍔',
+        subtitle: 'Opciones rápidas llenas de sabor',
+        items: [
+          { id: 'r1', name: 'Hamburguesa de Carne', price: 12500, desc: '' },
+          { id: 'r2', name: 'Hamburguesa de Pollo', price: 13000, desc: '' },
+          { id: 'r3', name: 'Suizo Especial', price: 14500, desc: 'Papa francesa + Ensalada' }
+        ]
+      },
+      {
+        id: 'sopas',
+        title: 'Sopas',
+        icon: '🍲',
+        subtitle: 'Calientes y tradicionales',
+        items: [
+          { id: 's1', name: 'Sopa', price: 8000, desc: 'Porción completa' },
+          { id: 's2', name: 'Taza Sopa', price: 6500, desc: 'Porción personal' }
+        ]
+      },
+      {
+        id: 'porciones',
+        title: 'Porciones',
+        icon: '🍟',
+        subtitle: 'Acompañamientos adicionales',
+        items: [
+          { id: 'po1', name: 'Papa Francesa', price: 8000, desc: '' },
+          { id: 'po2', name: 'Plátano con Queso', price: 8000, desc: '' },
+          { id: 'po3', name: 'Papa Salada', price: 6000, desc: '' },
+          { id: 'po4', name: 'Arepa', price: 2000, desc: '' },
+          { id: 'po5', name: 'Arepa Boyacense', price: 3000, desc: '' },
+          { id: 'po6', name: 'Patacón', price: 8000, desc: '' },
+          { id: 'po7', name: 'Yuca', price: 6000, desc: '' },
+          { id: 'po8', name: 'Arroz', price: 4000, desc: '' },
+          { id: 'po9', name: 'Ensalada', price: 4000, desc: '' }
+        ]
+      },
+      {
+        id: 'bebidas',
+        title: 'Bebidas',
+        icon: '🥤',
+        subtitle: 'Refrescantes para acompañar tu comida',
+        items: [
+          { id: 'b1', name: 'Gaseosa Personal', price: 4000, desc: '' },
+          { id: 'b2', name: 'Gaseosa 1.5L', price: 8000, desc: '' },
+          { id: 'b3', name: 'Gaseosa 2.5L', price: 9500, desc: '' },
+          { id: 'b4', name: 'H2OH', price: 4000, desc: '' },
+          { id: 'b5', name: 'Cola y Pola Lata', price: 4000, desc: '' },
+          { id: 'b6', name: 'Cola y Pola 1.5L', price: 9500, desc: '' },
+          { id: 'b7', name: 'Cerveza', price: 4500, desc: '' },
+          { id: 'b8', name: 'Agua en Botella', price: 3500, desc: '' },
+          { id: 'b9', name: 'Jugos Hit', price: 3500, desc: '' }
+        ]
+      }
+    ];
+
+    // Estado de la pre-orden { itemId: cantidad }
+    let cart = {};
+    let activeCategory = MENU_DATA[0].id;
+    let searchQuery = '';
+
+    // Formateador de moneda colombiana ($44.000)
+    function formatCOP(amount) {
+      return '$' + amount.toLocaleString('es-CO');
+    }
+
+    // Mostrar notificación flotante (Toast)
+    let toastTimeout;
+    function showToast(message, icon = '✓') {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-msg').textContent = message;
+      document.getElementById('toast-icon').textContent = icon;
+      toast.classList.remove('opacity-0', '-translate-y-2');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', '-translate-y-2');
+      }, 2400);
+    }
+
+    // Copiar texto al portapapeles usando document.execCommand('copy')
+    function copyTextToClipboard(text, successMsg) {
+      try {
+        const tempInput = document.createElement('textarea');
+        tempInput.value = text;
+        tempInput.setAttribute('readonly', '');
+        tempInput.style.position = 'fixed';
+        tempInput.style.opacity = '0';
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        tempInput.setSelectionRange(0, 99999);
+        const ok = document.execCommand('copy');
+        document.body.removeChild(tempInput);
+        if (ok) {
+          showToast(successMsg, '📋');
+        } else {
+          showToast('No se pudo copiar automáticamente', '!');
+        }
+      } catch (err) {
+        showToast('Error al copiar el texto', '!');
+      }
+    }
+
+    // Renderizar pestañas de categorías
+    function renderCategoryNav() {
+      const nav = document.getElementById('category-nav');
+      nav.innerHTML = MENU_DATA.map(cat => {
+        const isActive = cat.id === activeCategory;
+        return `
+          <a
+            href="#${cat.id}"
+            data-cat="${cat.id}"
+            class="cat-pill shrink-0 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition ${
+              isActive
+                ? 'bg-cacique-red text-white shadow-xs'
+                : 'bg-white text-cacique-brown border border-amber-200 hover:bg-amber-100/70'
+            }"
+          >
+            <span>${cat.icon}</span>
+            <span>${cat.title}</span>
+          </a>
+        `;
+      }).join('');
+
+      // Resaltar pestaña al hacer clic
+      nav.querySelectorAll('.cat-pill').forEach(link => {
+        link.addEventListener('click', () => {
+          activeCategory = link.dataset.cat;
+          updateActiveNavStyles();
+        });
+      });
+    }
+
+    function updateActiveNavStyles() {
+      document.querySelectorAll('.cat-pill').forEach(pill => {
+        const isActive = pill.dataset.cat === activeCategory;
+        if (isActive) {
+          pill.className = 'cat-pill shrink-0 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition bg-cacique-red text-white shadow-xs';
+          pill.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        } else {
+          pill.className = 'cat-pill shrink-0 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition bg-white text-cacique-brown border border-amber-200 hover:bg-amber-100/70';
+        }
+      });
+    }
+
+    // Normalizar texto para búsqueda sin tildes
+    function normalizeStr(str) {
+      return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    }
+
+    // Renderizar secciones y tarjetas del menú
+    function renderMenu() {
+      const container = document.getElementById('menu-container');
+      const emptyState = document.getElementById('empty-state');
+      const normalizedQuery = normalizeStr(searchQuery.trim());
+
+      let totalVisibleItems = 0;
+
+      const sectionsHTML = MENU_DATA.map(cat => {
+        const filteredItems = cat.items.filter(item => {
+          if (!normalizedQuery) return true;
+          return (
+            normalizeStr(item.name).includes(normalizedQuery) ||
+            normalizeStr(item.desc).includes(normalizedQuery) ||
+            normalizeStr(cat.title).includes(normalizedQuery)
+          );
+        });
+
+        if (filteredItems.length === 0) return '';
+        totalVisibleItems += filteredItems.length;
+
+        const itemsHTML = filteredItems.map(item => {
+          const qty = cart[item.id] || 0;
+          return `
+            <article class="bg-white rounded-2xl p-3.5 sm:p-4 border border-amber-200/80 shadow-2xs hover:border-amber-400 transition flex items-center justify-between gap-3">
+              <div class="min-w-0 flex-1">
+                <div class="flex flex-wrap items-center gap-1.5">
+                  <h3 class="text-sm sm:text-base font-extrabold text-cacique-darkBrown leading-snug">
+                    ${item.name}
+                  </h3>
+                  ${item.badge ? `<span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-amber-100 text-cacique-red border border-amber-300">${item.badge}</span>` : ''}
+                </div>
+                ${item.desc ? `<p class="text-xs sm:text-sm text-amber-950/75 mt-1 leading-relaxed">${item.desc}</p>` : ''}
+                <p class="text-base sm:text-lg font-black text-cacique-red mt-1.5">
+                  ${formatCOP(item.price)}
+                </p>
+              </div>
+
+              <!-- Controles de Pre-orden -->
+              <div class="shrink-0">
+                ${
+                  qty === 0
+                    ? `<button
+                        type="button"
+                        onclick="updateItemQty('${item.id}', 1)"
+                        class="px-3.5 py-2.5 rounded-xl bg-amber-100 hover:bg-cacique-yellow active:scale-95 text-cacique-darkBrown font-extrabold text-xs sm:text-sm border border-amber-300 transition flex items-center gap-1 cursor-pointer"
+                        aria-label="Agregar ${item.name} a la cuenta"
+                      >
+                        <span class="text-cacique-red text-base leading-none">+</span>
+                        <span>Agregar</span>
+                      </button>`
+                    : `<div class="inline-flex items-center bg-cacique-yellow/40 border border-cacique-amber rounded-xl p-1 gap-1.5">
+                        <button
+                          type="button"
+                          onclick="updateItemQty('${item.id}', -1)"
+                          class="w-8 h-8 rounded-lg bg-white hover:bg-red-50 text-cacique-red font-black text-base flex items-center justify-center shadow-2xs active:scale-90 cursor-pointer"
+                          aria-label="Quitar uno"
+                        >
+                          −
+                        </button>
+                        <span class="w-6 text-center text-sm font-black text-cacique-darkBrown">${qty}</span>
+                        <button
+                          type="button"
+                          onclick="updateItemQty('${item.id}', 1)"
+                          class="w-8 h-8 rounded-lg bg-cacique-red hover:bg-cacique-brightRed text-white font-black text-base flex items-center justify-center shadow-2xs active:scale-90 cursor-pointer"
+                          aria-label="Agregar otro"
+                        >
+                          +
+                        </button>
+                      </div>`
+                }
+              </div>
+            </article>
+          `;
+        }).join('');
+
+        return `
+          <section id="${cat.id}" class="menu-section">
+            <div class="flex items-center justify-between mb-3 pb-2 border-b-2 border-cacique-yellow">
+              <div class="flex items-center gap-2.5">
+                <span class="w-9 h-9 rounded-xl bg-cacique-red text-white text-lg flex items-center justify-center shadow-xs">
+                  ${cat.icon}
+                </span>
+                <div>
+                  <h2 class="text-lg sm:text-xl font-black uppercase tracking-tight text-cacique-darkBrown">
+                    ${cat.title}
+                  </h2>
+                  <p class="text-xs text-amber-900/70">${cat.subtitle}</p>
+                </div>
+              </div>
+              <span class="text-xs font-bold text-amber-900/60 bg-amber-100/80 px-2.5 py-1 rounded-full">
+                ${filteredItems.length} ${filteredItems.length === 1 ? 'opción' : 'opciones'}
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 gap-2.5">
+              ${itemsHTML}
+            </div>
+          </section>
+        `;
+      }).join('');
+
+      container.innerHTML = sectionsHTML;
+
+      if (totalVisibleItems === 0) {
+        emptyState.classList.remove('hidden');
+      } else {
+        emptyState.classList.add('hidden');
+      }
+    }
+
+    // Buscar un plato por ID en todo el menú
+    function findItemById(itemId) {
+      for (const cat of MENU_DATA) {
+        const found = cat.items.find(i => i.id === itemId);
+        if (found) return found;
+      }
+      return null;
+    }
+
+    // Actualizar cantidad de un plato en la pre-orden
+    function updateItemQty(itemId, delta) {
+      const current = cart[itemId] || 0;
+      const next = current + delta;
+
+      if (next <= 0) {
+        delete cart[itemId];
+      } else {
+        cart[itemId] = next;
+        if (current === 0) {
+          const item = findItemById(itemId);
+          if (item) showToast(`Agregado: ${item.name}`, '🍗');
+        }
+      }
+
+      renderMenu();
+      updateOrderUI();
+    }
+
+    // Actualizar barra flotante y modal de pre-orden
+    function updateOrderUI() {
+      const orderBar = document.getElementById('order-bar');
+      const countBadge = document.getElementById('order-count-badge');
+      const totalBar = document.getElementById('order-total-bar');
+      const totalModal = document.getElementById('order-total-modal');
+      const itemsList = document.getElementById('order-items-list');
+
+      let totalCount = 0;
+      let totalAmount = 0;
+      const entries = Object.entries(cart);
+
+      entries.forEach(([id, qty]) => {
+        const item = findItemById(id);
+        if (item) {
+          totalCount += qty;
+          totalAmount += item.price * qty;
+        }
+      });
+
+      countBadge.textContent = totalCount;
+      totalBar.textContent = formatCOP(totalAmount);
+      totalModal.textContent = formatCOP(totalAmount);
+
+      if (totalCount > 0) {
+        orderBar.classList.remove('translate-y-full');
+      } else {
+        orderBar.classList.add('translate-y-full');
+        closeModal();
+      }
+
+      // Renderizar lista dentro del modal
+      if (entries.length === 0) {
+        itemsList.innerHTML = `<p class="text-center text-sm text-amber-900/70 py-6">Aún no has agregado platos.</p>`;
+      } else {
+        itemsList.innerHTML = entries.map(([id, qty]) => {
+          const item = findItemById(id);
+          if (!item) return '';
+          return `
+            <div class="flex items-center justify-between gap-3 bg-white p-3 rounded-2xl border border-amber-200">
+              <div class="min-w-0 flex-1">
+                <p class="text-sm font-extrabold text-cacique-darkBrown truncate">${item.name}</p>
+                <p class="text-xs text-amber-900/70">${formatCOP(item.price)} c/u</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-sm font-black text-cacique-red mr-1">${formatCOP(item.price * qty)}</span>
+                <button type="button" onclick="updateItemQty('${item.id}', -1)" class="w-7 h-7 rounded-lg bg-amber-100 text-cacique-darkBrown font-black flex items-center justify-center cursor-pointer">−</button>
+                <span class="w-5 text-center text-xs font-black">${qty}</span>
+                <button type="button" onclick="updateItemQty('${item.id}', 1)" class="w-7 h-7 rounded-lg bg-cacique-red text-white font-black flex items-center justify-center cursor-pointer">+</button>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+
+    // Funciones del Modal de Pre-orden
+    const orderModal = document.getElementById('order-modal');
+    function openModal() {
+      orderModal.classList.remove('hidden');
+      orderModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      orderModal.classList.add('hidden');
+      orderModal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    // Inicialización de eventos al cargar el DOM
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCategoryNav();
+      renderMenu();
+
+      // Búsqueda en tiempo real
+      const searchInput = document.getElementById('search-input');
+      const clearSearchBtn = document.getElementById('clear-search');
+      const resetSearchBtn = document.getElementById('reset-search-btn');
+
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value;
+        if (searchQuery.trim().length > 0) {
+          clearSearchBtn.classList.remove('hidden');
+          clearSearchBtn.classList.add('flex');
+        } else {
+          clearSearchBtn.classList.add('hidden');
+          clearSearchBtn.classList.remove('flex');
+        }
+        renderMenu();
+      });
+
+      const resetSearch = () => {
+        searchQuery = '';
+        searchInput.value = '';
+        clearSearchBtn.classList.add('hidden');
+        clearSearchBtn.classList.remove('flex');
+        renderMenu();
+      };
+
+      clearSearchBtn.addEventListener('click', resetSearch);
+      resetSearchBtn.addEventListener('click', resetSearch);
+
+      // Copiar número Bre-B
+      document.getElementById('copy-breb-btn').addEventListener('click', () => {
+        copyTextToClipboard('0090142901', 'Llave Bre-B 0090142901 copiada');
+      });
+
+      // Controles Modal Pre-orden
+      document.getElementById('open-order-modal').addEventListener('click', openModal);
+      document.getElementById('close-order-modal').addEventListener('click', closeModal);
+      orderModal.addEventListener('click', (e) => {
+        if (e.target === orderModal) closeModal();
+      });
+
+      document.getElementById('clear-order-btn').addEventListener('click', () => {
+        cart = {};
+        renderMenu();
+        updateOrderUI();
+        showToast('Pre-orden vaciada', '🗑️');
+      });
+
+      document.getElementById('copy-order-btn').addEventListener('click', () => {
+        const lines = ['*Pre-orden - Asadero y Restaurante El Cacique*'];
+        let total = 0;
+        Object.entries(cart).forEach(([id, qty]) => {
+          const item = findItemById(id);
+          if (item) {
+            const sub = item.price * qty;
+            total += sub;
+            lines.push(`• ${qty}x ${item.name} (${formatCOP(sub)})`);
+          }
+        });
+        lines.push(`\n*Total estimado: ${formatCOP(total)}*`);
+        copyTextToClipboard(lines.join('\n'), 'Resumen de pedido copiado');
+      });
+
+      // Actualizar categoría activa automáticamente al hacer scroll
+      window.addEventListener('scroll', () => {
+        if (searchQuery.trim() !== '') return;
+        const sections = document.querySelectorAll('.menu-section');
+        let currentId = activeCategory;
+
+        sections.forEach(sec => {
+          const rect = sec.getBoundingClientRect();
+          if (rect.top <= 170) {
+            currentId = sec.id;
+          }
+        });
+
+        if (currentId !== activeCategory) {
+          activeCategory = currentId;
+          updateActiveNavStyles();
+        }
+      }, { passive: true });
+    });
+  </script>
+</body>
+</html>
+```
